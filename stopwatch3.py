@@ -53,7 +53,7 @@ def update_arch():
     print(recId)
 
     current_time = datetime.now()
-    final = current_time - start_time
+    tm = current_time - start_time
     tm = txt_var.get()
     print(tm)
 

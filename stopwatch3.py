@@ -4,8 +4,8 @@ import tkinter.font as TkFont
 from datetime import datetime
 import requests
 
-AIRTABLE_BASE_ID='app8SpXwKPvQDa3V6'
-AIRTABLE_API_KEY='keyhPGNff38r9lpkZ'
+AIRTABLE_BASE_ID='xxxxxxxx'
+AIRTABLE_API_KEY='xxxxxxxx'
 AIRTABLE_NAME='projects'
 
 

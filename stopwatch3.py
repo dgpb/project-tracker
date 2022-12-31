@@ -11,24 +11,50 @@ AIRTABLE_NAME='projects'
 
 def run():
     current_time = datetime.now()
-    diff = current_time - start_time
+    diff = current_time - start_time 
     txt_var.set('%d.%02d' % (diff.seconds,diff.microseconds//10000))
+
+
 
     if running:
         root.after(20,run)
 
+
 def start():
     global running
     global start_time
+    global start_pause
+
 
     if not running:
         running = True
-        start_time = datetime.now()
+        if start_pause is None:
+            start_time = datetime.now()
+            print("start", start_time)
+        else:
+            start_time = start_pause
+            print("new start", start_time)
+
+
         root.after(10,run)
+
+
+    #print("start_time", start_time)
 
 def stop():
     global running
+    global start_pause
+
     running = False
+    start_pause = datetime.now()
+
+    print("start_pause", start_pause)
+
+
+
+#def stop():
+    #global running
+    #running = False
 
 def reset():
     global start_time
@@ -40,6 +66,8 @@ def reset():
 
 running = False
 start_time = None
+start_pause = None
+
 
 root = tk.Tk()
 root.geometry("390x500")
@@ -94,7 +122,7 @@ txt_var = tk.StringVar()
 txt_var.set('0.00')
 
 
-fontStyle = TkFont.Font(family="Terminal", size = 50)
+fontStyle = TkFont.Font(family="Terminal", size = 10)
 tk.Label(root, textvariable=id,font = fontStyle)
 tk.Label(root, textvariable=txt_var,font = fontStyle).pack(pady = 50)
 
@@ -114,3 +142,4 @@ id_button = tk.Button(root, text="Sent", width=50, bg="#ffa981")
 id_button.pack(pady = 5)
 
 root.mainloop()
+
